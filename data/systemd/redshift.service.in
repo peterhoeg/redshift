@@ -1,11 +1,11 @@
 [Unit]
 Description=Redshift display colour temperature adjustment
 Documentation=http://jonls.dk/redshift/
-After=display-manager.service
 
 [Service]
-ExecStart=@bindir@/redshift
-Restart=always
+ExecStart=@bindir@/redshift -c %h/.config/redshift.conf
+Restart=on-failure
+PrivateTmp=true
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target
